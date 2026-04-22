@@ -20,6 +20,7 @@ function divide(a, b) {
 function calculate() {
 	document.querySelector(".calculate").addEventListener("click", (e) => {
 		operate(firstNumber, secondNumber, operator);
+		secondNumber = document.querySelector(".display").textContent;
 	});
 }
 
