@@ -19,7 +19,7 @@ function divide(a, b) {
 
 function calculate() {
 	document.querySelector(".calculate").addEventListener("click", (e) => {
-		operate(firstNumber, secondNumber, operator);
+		operate(secondNumber, firstNumber, operator);
 		secondNumber = document.querySelector(".display").textContent;
 	});
 }
@@ -63,11 +63,12 @@ function getOperator() {
 		item.addEventListener("click", (e) => {
 			if (operator) {
 				console.log("you are here");
+				operate(firstNumber, secondNumber, operator);
 				secondNumber = document.querySelector(".display").textContent;
 			} else {
-				operator = e.target.textContent;
 				secondNumber = firstNumber;
 			}
+			operator = e.target.textContent;
 			firstNumber = "";
 		}),
 	);
