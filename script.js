@@ -36,7 +36,7 @@ function operate(a, b, symbol) {
 			result = subtract(a, b);
 			document.querySelector(".display").textContent = result;
 			break;
-		case "*":
+		case "x":
 			result = multiply(a, b);
 			document.querySelector(".display").textContent = result;
 			break;
@@ -60,8 +60,13 @@ function getOperator() {
 	let operatorElement = document.querySelectorAll(".operator");
 	operatorElement.forEach((item) =>
 		item.addEventListener("click", (e) => {
-			operator = e.target.textContent;
-			secondNumber = firstNumber;
+			if (operator) {
+				console.log("you are here");
+				secondNumber = document.querySelector(".display").textContent;
+			} else {
+				operator = e.target.textContent;
+				secondNumber = firstNumber;
+			}
 			firstNumber = "";
 		}),
 	);
