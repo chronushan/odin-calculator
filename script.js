@@ -1,3 +1,7 @@
+let firstNumber = "";
+let secondNumber = "";
+let operator;
+
 function add(a, b) {
 	return a + b;
 }
@@ -13,19 +17,56 @@ function divide(a, b) {
 	return a / b;
 }
 
-function operate(a, b, operator) {
-	switch (operator) {
+function calculate() {
+	document.querySelector(".calculate").addEventListener("click", (e) => {
+		operate(firstNumber, secondNumber, operator);
+	});
+}
+
+function operate(a, b, symbol) {
+	a = Number(a);
+	b = Number(b);
+	let result;
+	switch (symbol) {
 		case "+":
-			add(a, b);
+			result = add(a, b);
+			document.querySelector(".display").textContent = result;
 			break;
 		case "-":
-			subtract(a, b);
+			result = subtract(a, b);
+			document.querySelector(".display").textContent = result;
 			break;
 		case "*":
-			multiply(a, b);
+			result = multiply(a, b);
+			document.querySelector(".display").textContent = result;
 			break;
-		case "/":
-			divide(a, b);
+		case "÷":
+			result = divide(a, b);
+			document.querySelector(".display").textContent = result;
 			break;
 	}
 }
+
+function getNum() {
+	let number = document.querySelectorAll(".number button");
+	number.forEach((item) =>
+		item.addEventListener("click", (e) => {
+			firstNumber += e.target.textContent;
+		}),
+	);
+}
+
+function getOperator() {
+	let operatorElement = document.querySelectorAll(".operator");
+	operatorElement.forEach((item) =>
+		item.addEventListener("click", (e) => {
+			operator = e.target.textContent;
+			secondNumber = firstNumber;
+			firstNumber = "";
+		}),
+	);
+}
+
+getNum();
+getOperator();
+calculate();
