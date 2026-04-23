@@ -63,7 +63,6 @@ function getOperator() {
 	operatorElement.forEach((item) =>
 		item.addEventListener("click", (e) => {
 			if (operator) {
-				operate(firstNumber, secondNumber, operator);
 				secondNumber = document.querySelector(".display").textContent;
 			} else {
 				secondNumber = firstNumber;
