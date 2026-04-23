@@ -53,6 +53,7 @@ function getNum() {
 	number.forEach((item) =>
 		item.addEventListener("click", (e) => {
 			firstNumber += e.target.textContent;
+			document.querySelector(".display").textContent = firstNumber;
 		}),
 	);
 }
@@ -62,7 +63,6 @@ function getOperator() {
 	operatorElement.forEach((item) =>
 		item.addEventListener("click", (e) => {
 			if (operator) {
-				console.log("you are here");
 				operate(firstNumber, secondNumber, operator);
 				secondNumber = document.querySelector(".display").textContent;
 			} else {
@@ -73,6 +73,12 @@ function getOperator() {
 		}),
 	);
 }
+
+document.querySelector("#clear").addEventListener("click", (item) => {
+	document.querySelector(".display").textContent = 0;
+	firstNumber = "";
+	secondNumber = "";
+});
 
 getNum();
 getOperator();
