@@ -42,9 +42,16 @@ function operate(a, b, symbol) {
 			document.querySelector(".display").textContent = result;
 			break;
 		case "÷":
-			result = divide(a, b);
-			document.querySelector(".display").textContent = result;
-			break;
+			if (b == 0) {
+				document.querySelector(".display").textContent = "What the?";
+				firstNumber = "";
+				secondNumber = "";
+				break;
+			} else {
+				result = divide(a, b);
+				document.querySelector(".display").textContent = result;
+				break;
+			}
 	}
 }
 
